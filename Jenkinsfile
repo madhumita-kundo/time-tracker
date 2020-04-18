@@ -15,6 +15,11 @@ pipeline {
 				sh 'mvn compile'
 				}
 		}
+		stage('path'){
+			steps {
+				sh 'pwd'
+				}
+		}
 		stage('clear container'){
 			steps {
 				sh 'docker container rm --force time-tracker'
