@@ -8,5 +8,5 @@ This is a demo repo.
 Time tracker
 ---------------------
 It is pushed to jenkins and a new image is created each time there is a change.
-There is a check where existing container is deleted if exists
+It deletes the previous container with the same name and hence fress the port.
 Name is creating the build to fail if there is any existing container with the same name.
