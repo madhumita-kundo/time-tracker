@@ -15,6 +15,11 @@ pipeline {
 				sh 'mvn compile'
 				}
 		}
+		stage('clean'){
+			steps {
+				sh 'mvn clean'
+				}
+		}
 		stage('path'){
 			steps {
 				sh 'pwd'
