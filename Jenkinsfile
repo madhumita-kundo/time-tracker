@@ -1,9 +1,5 @@
 pipeline {
-   tools {
-      // Install the Maven version configured as "M3" and add it to the path.
-      maven "ApacheMaven"
-   	}
-   agent any
+     agent any
 	stages {
 		stage('Git Checkout'){
 			steps {
