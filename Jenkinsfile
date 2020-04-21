@@ -9,21 +9,17 @@ pipeline {
 		}
 		stage('compile'){
 			steps {
-				sh 'mvn compile'
+				sh 'mvn clean compile'
 				}
 		}
-		stage('clean'){
+		stage('package'){
 			steps {
-				sh 'mvn clean'
-				}
-		}
-		stage('path'){
-			steps {
-				sh 'pwd'
+				sh 'mvn package'
 				}
 		}
 		stage('clear container'){
 			steps {
+				sh 'pwd'
 				sh 'docker container rm --force time-tracker'
 				}
 		}
