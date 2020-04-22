@@ -17,12 +17,12 @@ pipeline {
 				sh 'mvn package'
 				}
 		}
-		//stage('clear container'){
-		//	steps {
-		//		sh 'pwd'
-		//		sh 'docker container rm --force time-tracker'
-		//		}
-		//}
+		stage('clear container'){
+			steps {
+				sh 'pwd'
+				sh 'docker container rm --force time-tracker'
+				}
+		}
 		stage('docker build'){
 			steps {
 				sh 'docker build -t timetracker-test:${BUILD_NUMBER} .'
