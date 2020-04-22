@@ -19,8 +19,7 @@ pipeline {
 		}
 		stage('clear container'){
 			steps {
-				sh """#!/bin/bash
-				GO=$(docker ps | grep time-tracker |wc -c)
+				sh """ GO=$(docker ps | grep time-tracker |wc -c)
 				echo "$GO"
 				if [ $GO -ne 0 ]
  				then
