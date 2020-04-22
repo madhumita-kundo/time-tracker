@@ -34,7 +34,7 @@ pipeline {
 		}
 		stage('swarm initialisation'){
 			steps {
-				sh 'swarm init'
+				sh 'docker swarm init'
 				}
 		}
 		stage('swarm service'){
