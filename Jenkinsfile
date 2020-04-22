@@ -32,9 +32,14 @@ pipeline {
 				sh 'docker build -t timetracker-test:${BUILD_NUMBER} .'
 				}
 		}
-		stage('docker run'){
+		stage('swarm initialisation'){
 			steps {
-				sh 'docker container run --name time-tracker -d -p 8888:8080 timetracker-test:${BUILD_NUMBER}'
+				sh 'swarm init'
+				}
+		}
+		stage('swarm service'){
+			steps {
+				sh 'docker service create --name time-tracker -d -p 8000:8080 timetracker-test:${BUILD_NUMBER}'
 				}
 		}
 	}
