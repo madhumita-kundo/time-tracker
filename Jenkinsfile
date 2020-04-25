@@ -17,12 +17,12 @@ pipeline {
 				sh 'mvn package'
 				}
 		}
-		stage('clear container'){
+		stage('clear service'){
 			steps {
-				sh ''' GO=$(docker ps | grep time-tracker |wc -c)
+				sh ''' GO=$(docker service ls | grep "time-tracker" | wc -l)
 				if [ $GO -ne 0 ]
  				then
-   				docker container rm --force time-tracker
+   				docker service rm time-tracker
    				fi
 				'''
 				}
@@ -30,11 +30,6 @@ pipeline {
 		stage('docker build'){
 			steps {
 				sh 'docker build -t timetracker-test:${BUILD_NUMBER} .'
-				}
-		}
-		stage('swarm initialisation'){
-			steps {
-				sh 'docker swarm init'
 				}
 		}
 		stage('swarm service'){
